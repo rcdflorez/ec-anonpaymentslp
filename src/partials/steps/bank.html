@@ -1,0 +1,124 @@
+<div class="bank-PO po-content col-12 mx-0 px-0 d-none">
+  <form
+    action="#"
+    class="needs-validation form bank-payment-form"
+    novalidate
+    id="bankPaymentForm"
+  >
+    <h4 class="text-start">Bank Account Details</h4>
+    <div id="card-errors" role="alert"></div>
+
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-6">
+        <label for="firstName">First Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          class=""
+          name="firstName"
+          id="firstName"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-6">
+        <label for="lastname">Last Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+          class=""
+          name="lastname"
+          id="lastname"
+        />
+      </div>
+    </div>
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-8">
+        <label for="firstName">Email Address<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+          class=""
+          name="firstName"
+          id="firstName"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-4">
+        <label for="lastname">Last 4 Digigts of SNN<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          pattern="^[0-9]{4}$"
+          required
+          class=""
+          name="lastname"
+          id="lastname"
+        />
+      </div>
+    </div>
+    <div class="row text-start my-4">
+      <div class="form-group col-md-6">
+        <label for="stp5anumber">Account Number<span> *</span></label>
+
+        <input
+          type="text"
+          required
+          pattern="^[0-9]{7,20}$"
+          class="form-control"
+          id="bank_account_number"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="stp5rnumber">Routing Number<span> *</span></label>
+
+        <input
+          required
+          pattern="^[0-9]{9}$"
+          type="text"
+          maxlength="9"
+          class="form-control"
+          id="routing_number"
+        />
+      </div>
+    </div>
+    <div class="row text-start my-4">
+      <div class="form-group col-12">
+        <label for="stp5anumber">Bank Name</label>
+        <input type="text" class="form-control" id="bank_name" />
+      </div>
+    </div>
+
+    <!--
+    <div class="step-1 py-2 col-11 mx-auto" id="berbixArea">
+      <div class="BerBix-place-holder justify-content-center">
+        <div class="spinner">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+        </div>
+      </div>
+    </div>
+
+    -->
+
+    <partial src="paymentauth.html"></partial>
+
+    <div class="text-end">
+      <button
+        class="btn btn-access my-2 my-md-5 payment-btn"
+        paymnt="Bank"
+        id="bank-button"
+      >
+        <h5 class="m-0">Make Payment</h5>
+      </button>
+    </div>
+  </form>
+</div>

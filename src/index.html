@@ -1,0 +1,93 @@
+<partial src="header.html"></partial>
+<div class="container-md">
+  <div class="row border-bottom">
+    <h2 class="text-center py-3">Make A Payment</h2>
+  </div>
+</div>
+<section class="berbix">
+  <div class="container-md my-4 text-start nav-bar-container d-none d-sm-block">
+    <div class="row">
+      <div class="col-md-12 mx-0 px-0 mx-auto">
+        <ul class="paymentOptionsNav mx-0 px-0 text-center text-md-start">
+          <li class="active-nav">
+            <a data-po="debit" href="#">Debit Card</a>
+          </li>
+          <li class="mx-5"><a data-po="bank" href="#">Bank Draft</a></li>
+          <!--
+            <li><a data-po="paypal" href="#">PayPal</a></li>
+          -->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container-md my-4 text-center">
+    <div class="row">
+      <div class="col-md-4 amount-box order-lg-1 order-lg-2">
+        <div class="border rounded container px-5">
+          <div class="row">
+            <h4 class="text-center pt-5">Enter your payment amount</h4>
+          </div>
+          <div class="row py-3">
+            <input
+              class="border rounded text-center"
+              type="text"
+              id="paymentAmount"
+              placeholder="$0.00"
+            />
+          </div>
+          <div class="row border-top">
+            <p>
+              If your payment does not clear your bank, a fee may be assessed.
+              In addition, in the case of paying an early payment, your payment
+              will still be considered due until payment has cleared your bank.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="
+          container-md
+          my-4
+          text-start
+          mt-5
+          nav-bar-container
+          d-block d-sm-none
+        "
+      >
+        <div class="row">
+          <div class="col-md-12 mx-0 px-0 mx-auto">
+            <ul
+              class="
+                paymentOptionsNav
+                mx-0
+                px-0
+                text-center text-md-start
+                d-flex
+                justify-content-around
+              "
+            >
+              <li class="active-nav">
+                <a data-po="debit" href="#">Debit Card</a>
+              </li>
+              <li class=""><a data-po="bank" href="#">Bank Draft</a></li>
+              <!--
+                 <li><a data-po="paypal" href="#">PayPal</a></li>
+              -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 mx-auto px-0 order-lg-1">
+        <div class="px-3 px-sm-0" id="poContainer">
+          <partial src="steps/debit.html"></partial>
+          <partial src="steps/bank.html"></partial>
+          <partial src="steps/paypal.html"></partial>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <partial src="contact.html"></partial>
+</section>
+
+<partial src="footer.html"></partial>

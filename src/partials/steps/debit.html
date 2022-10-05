@@ -1,0 +1,192 @@
+<div class="debit-PO po-content col-12 mx-0 px-0">
+  <form
+    action="#"
+    class="needs-validation form debit-payment-form"
+    id="debitPaymentForm"
+    novalidate
+  >
+    <h4 class="text-start">Card Information</h4>
+    <div id="card-errors" role="alert"></div>
+
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-7">
+        <div class="row d-flex align-items-end">
+          <div class="col-10">
+            <label for="cardNumber">Debit Card Number<span> *</span></label>
+            <input
+              pattern="^((4\d{3})|(5[1-5]\d{2})|(6011)|(34\d{1})|(37\d{1}))-?\s?\d{4}-?\s?\d{4}-?\s?\d{4}|3[4,7][\d\s-]{15}$"
+              type="text"
+              required
+              id="card"
+              class="form-control"
+              jsonKey="DebitCardNumber"
+            />
+          </div>
+          <div class="col-2">
+            <div id="logo"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-12 col-md-3">
+        <label for="expration">Expiration<span> *</span></label>
+        <input
+          pattern="^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$"
+          class="form-control"
+          type="text"
+          required
+          id="card-exp"
+          onkeyup="formatCCExpDate(event);"
+          jsonKey="DebitCardExp"
+        />
+      </div>
+      <div class="form-group col-12 col-md-2">
+        <label for="cvv">CVV<span> *</span></label>
+        <input
+          class="form-control"
+          type="text"
+          required
+          id="card-cvc"
+          pattern="^[0-9]{3,4}$"
+          jsonKey="DebitCardCvv"
+        />
+      </div>
+    </div>
+
+    <h4 class="text-start">Billing Information</h4>
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-6">
+        <label for="firstName">First Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          class=""
+          type="text"
+          name="firstName"
+          id="firstName"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+          jsonKey="CustomerFirstName"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-6">
+        <label for="lastname">Last Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+          class=""
+          name="lastname"
+          id="lastname"
+          jsonKey="CustomerLastName"
+        />
+      </div>
+    </div>
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-8">
+        <label for="firstName">Email Address<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+          class=""
+          name="firstName"
+          id="firstName"
+          jsonKey="CustomerEmail"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-4">
+        <label for="lastname">Last 4 Digigts of SNN<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          pattern="^[0-9]{4}$"
+          required
+          class=""
+          name="lastname"
+          id="lastname"
+          jsonKey="Last4SSN"
+        />
+      </div>
+    </div>
+
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12">
+        <label for="address">Address <span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$"
+          class=""
+          name="address"
+          id="address"
+          jsonKey="Address"
+        />
+      </div>
+    </div>
+
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-7">
+        <label for="city">City<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          class=""
+          name="city"
+          id="city"
+          jsonKey="City"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-3">
+        <label for="State">State<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          class=""
+          name="State"
+          id="State"
+          jsonKey="State"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-2">
+        <label for="zip">Zip<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          class=""
+          name="zip"
+          id="zip"
+          jsonKey="Zip"
+        />
+      </div>
+    </div>
+
+    <partial src="paymentauth.html"></partial>
+
+    <div class="text-end">
+      <button
+        class="btn btn-access my-2 my-md-5 payment-btn"
+        paymnt="Debit"
+        id="debit-button"
+      >
+        <h5 class="m-0">Make Payment</h5>
+      </button>
+    </div>
+  </form>
+</div>

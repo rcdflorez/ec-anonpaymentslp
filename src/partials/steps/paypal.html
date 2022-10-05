@@ -1,0 +1,83 @@
+<div class="paypal-PO po-content col-12 mx-0 px-0 d-none">
+  <form action="#" class="needs-validation form" novalidate>
+    <h4 class="text-start">PayPal Payment</h4>
+    <div id="card-errors" role="alert"></div>
+
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-6">
+        <label for="firstName">First Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          class=""
+          name="firstName"
+          id="firstName"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-6">
+        <label for="lastname">Last Name<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+          class=""
+          name="lastname"
+          id="lastname"
+        />
+      </div>
+    </div>
+    <div class="row d-flex text-start my-4">
+      <div class="form-group col-12 col-md-8">
+        <label for="firstName">Email Address<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          required
+          pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+          class=""
+          name="firstName"
+          id="firstName"
+        />
+      </div>
+
+      <div class="form-group col-12 col-md-4">
+        <label for="lastname">Last 4 Digigts of SNN<span> *</span></label>
+
+        <input
+          class="form-control"
+          type="text"
+          pattern="^[0-9]{4}$"
+          required
+          class=""
+          name="lastname"
+          id="lastname"
+        />
+      </div>
+    </div>
+
+    <!--
+    <p class="text-start text-disclaimer">
+      *Note that this information is required for verification purposes,
+      however, you have alternatives to debit card payment. Please contact us at
+      <a href="">844-355-5626</a> or
+      <a href=""> support@explorecredit.com</a> if you would like to select a
+      different payment method.
+    </p>
+
+
+    -->
+
+    <partial src="paymentauth.html"></partial>
+
+    <div class="text-end">
+      <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>
+      <i class="bi bi-paypal">Pay with PayPal </i>
+    </div>
+  </form>
+</div>
