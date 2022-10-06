@@ -1,4 +1,5 @@
-let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
+//let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
+let baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
 let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
 let payload = {};
