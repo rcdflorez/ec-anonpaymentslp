@@ -38,6 +38,7 @@ $(".payment-btn").click(function (e) {
   let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
 
   console.log(payload);
+  console.log(paymentEndPoint);
 
   $.ajax({
     url: paymentEndPoint,

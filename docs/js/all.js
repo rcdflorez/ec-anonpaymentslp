@@ -701,7 +701,7 @@ function validateRoutingNumber(val) {
 //let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
 const baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
-let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
+
 let payload = {};
 let amount = 0;
 const queryString = window.location.search;
@@ -735,7 +735,10 @@ $(".payment-btn").click(function (e) {
     payload["Last4SSN"]
   }-${campaign}-${new Date().toJSON()}`;
 
+  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
+
   console.log(payload);
+  console.log(paymentEndPoint);
 
   $.ajax({
     url: paymentEndPoint,
