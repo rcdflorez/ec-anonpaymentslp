@@ -21,7 +21,7 @@
 
             </div>
             <script src="https://cdn.jsdelivr.net/npm/pretty-money@1/dist/pretty-money.umd.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLxDf_fbc_6Yvst0Z0nLSPIW52J2dFbuc&callback=initAutocomplete&libraries=places&v=weekly"
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw0uECgfavfakbO_S1JRUi-n9SaKvi7Mo&callback=initAutocomplete&libraries=places&v=weekly"
             defer></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.2.0/vanilla-masker.min.js"></script>
         </header>
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="container-md my-4 text-center">
+    <div class="container-md my-4 text-center main-container">
         <div class="row">
             <div class="col-md-4 amount-box order-lg-1 order-lg-2">
                 <div class="border rounded container px-5">
@@ -60,12 +60,12 @@
                     </div>
                     <div class="row py-3">
                         <input class="border rounded text-center" type="text" id="paymentAmount"
-                        placeholder="$0.00" />
+                        placeholder="$0.00" /> <small class="px-0">Min. amount: $5, Max. amount: $20,000</small>
+
                     </div>
                     <div class="row border-top">
-                        <p>If your payment does not clear your bank, a fee may be assessed. In addition,
-                            in the case of paying an early payment, your payment will still be considered
-                            due until payment has cleared your bank.</p>
+                        <p>If your payment does not clear, a fee may be assessed. In the case of
+                            an early payment, your payment will be considered due until received.</p>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@
 
                                     </label>
                                     <input class="form-control" type="text" required class="" name="zip" id="zip"
-                                    jsonKey="Zip" />
+                                    jsonKey="Zip" pattern="^\d{5}(?:[-\s]\d{4})?$" />
                                 </div>
                             </div>
                             <div class="container border paymentauth-container">
@@ -438,12 +438,9 @@
             </div>
         </div>
     </div>
-    <div class="container-md my-3 text-center contact px-sm-4 ">
-        <p class="mx-sm-5 px-sm-5 mb-5">If you're experiencing any issues or if you'd like to speak with one of
-            our customer service representatives, please call or text <a href="">844-355-5625</a> Monday
-            - Friday 8-am - 8pm EST and Saturdays from 8am -5pm EST. You can also email
-            our team at <a href="">support@explorecredit.com</a>.</p>
-    </div>
+    <div class="container-md my-3 text-center contact px-sm-4">If you'd like to speak with one of our customer service representatives,
+        please call or text<a href="tel:844-355-5626"> 844-355-5626 </a>8am EST
+        – 9pm EST (Every Day). You can also email our team at <a href="mailto:support@explorecredit.com">support@explorecredit.com</a>.</div>
 </section>
 <footer class="footer container text-center ">
     <p>© Copyrigth 2021 Explore Credit.</p>

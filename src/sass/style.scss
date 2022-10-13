@@ -793,3 +793,8 @@ span.paypal-logo {
     color: #179bd7 !important;
   }
 }
+
+.was-validated .form-check-input:valid:checked,
+.form-check-input.is-valid:checked {
+  background-color: white !important;
+}

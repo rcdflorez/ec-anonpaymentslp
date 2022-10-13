@@ -31,6 +31,14 @@ function delay(callback, ms) {
 $("#paymentAmount").keyup(
   delay(function (e) {
     validatePaymentAmount();
+    amount = paymentAmount.value.replace(/[^0-9.]/g, "");
+
+    if (amount < 5 || amount > 20000) {
+      paymentAmount.style.cssText = "border-color: red !important";
+      return false;
+    } else {
+      paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
+    }
   }, 500)
 );
 
