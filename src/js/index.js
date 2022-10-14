@@ -62,8 +62,10 @@ $("#paymentAmount").keyup(
         event.preventDefault();
         event.stopPropagation();
         form.classList.add("was-validated");
-        if (!$("#paymentConsentCheck").is(":checked")) return false;
+        console.log("here 0");
+        if (!$(this).find(".paymentConsentCheck").is(":checked")) return false;
 
+        console.log("here");
         postPayment(
           $(this).attr("id"),
           $(this).find(".payment-btn").attr("paymnt")

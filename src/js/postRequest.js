@@ -31,13 +31,13 @@ function postPayment(target, option) {
     payload[$(this).attr("jsonKey")] = $(this).val();
   });
 
-  let expDate = payload["DebitCardExp"];
+  if (typeof payload["DebitCardExp"] !== "undefined") {
+    let expDate = payload["DebitCardExp"];
 
-  payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
-    expDate.split("/")[1]
-  }`;
-
-  console.log(payload["DebitCardExp"]);
+    payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
+      expDate.split("/")[1]
+    }`;
+  }
 
   payload["LoanId"] = loanID;
   payload["SessionId"] = `${
@@ -53,10 +53,9 @@ function postPayment(target, option) {
     fd.append(key, payload[key]);
   });
 
-  if (!$("#paymentConsentCheck").is(":checked")) {
-    // return false;
-  }
+  console.log(payload);
 
+  return false;
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
