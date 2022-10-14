@@ -13,7 +13,7 @@ const htmlPartial = require("gulp-html-partial");
 const clean = require("gulp-clean");
 const isProd = process.env.NODE_ENV === "prod";
 
-const htmlFile = ["src/*.html"];
+const htmlFile = ["src/**/*.html"];
 
 function html() {
   return gulp

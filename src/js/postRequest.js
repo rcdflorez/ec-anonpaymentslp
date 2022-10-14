@@ -10,9 +10,7 @@ const urlParams = new URLSearchParams(queryString);
 const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
 
-$(".payment-btn").click(function (e) {
-  //e.preventDefault();
-
+function postPayment(target, option) {
   amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
   if (amount < 5 || amount > 20000) {
@@ -22,45 +20,64 @@ $(".payment-btn").click(function (e) {
     paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
   }
 
-  paymentMethod = this.getAttribute("paymnt");
+  console.log(target);
+  console.log(option);
 
-  $activeForm = $(this).closest("form").attr("id");
+  //paymentMethod = this.getAttribute("paymnt");
 
-  $(`#${$activeForm} input[type=text]`).each(function () {
+  //$activeForm = $(this).closest("form").attr("id");
+
+  $(`#${target} input[type=text]`).each(function () {
     payload[$(this).attr("jsonKey")] = $(this).val();
   });
+
+  let expDate = payload["DebitCardExp"];
+
+  payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
+    expDate.split("/")[1]
+  }`;
+
+  console.log(payload["DebitCardExp"]);
 
   payload["LoanId"] = loanID;
   payload["SessionId"] = `${
     payload["Last4SSN"]
   }-${campaign}-${new Date().toJSON()}`;
 
-  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
+  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
-  console.log(payload);
-  console.log(paymentEndPoint);
+  payload["PaymentAmount"] = amount;
+
+  var fd = new FormData();
+  Object.keys(payload).map((key) => {
+    fd.append(key, payload[key]);
+  });
+
+  if (!$("#paymentConsentCheck").is(":checked")) {
+    // return false;
+  }
 
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
-    data: payload,
+    data: fd,
     dataType: "json",
     contentType: false,
     processData: false,
     success: function (response) {
-      console.log(response);
+      if (
+        response.completeSuccess == true &&
+        response.customerFound == true &&
+        response.paymentMethodValid == true &&
+        response.paymentSuccessful == true
+      ) {
+        localStorage.setItem("paidAmount", amount);
+        localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-      $(".paymentOptionsNav").html("");
-      $(".main-container")
-        .html(`<svg class="checkmark mx-auto my-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-     </svg>
-     <h1 class="my-sm-4 heading-title col-md-11 mx-auto mb-5">Thank you for Bank Account submission. We will be in touch with you in the next 2 - 3 business days with the decision on your funds.</h1>
-     <a onClick="(function(){moveRight()})();return false;" 
-        href="/index" 
-        class="btn justify-content-center btn btn-access mb-5 verification-completed"> Continue</a>`);
-      console.log(response);
+        window.location.replace("/thank-you-for-your-payment/");
+
+        console.log("Hi");
+      } else return false;
     },
   });
-});
+}

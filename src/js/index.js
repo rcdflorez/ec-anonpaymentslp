@@ -53,12 +53,21 @@ $("#paymentAmount").keyup(
     form.addEventListener(
       "submit",
       function (event) {
+        /*
         if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
+          
         }
-
+        
+ */
+        event.preventDefault();
+        event.stopPropagation();
         form.classList.add("was-validated");
+        if (!$("#paymentConsentCheck").is(":checked")) return false;
+
+        postPayment(
+          $(this).attr("id"),
+          $(this).find(".payment-btn").attr("paymnt")
+        );
       },
       false
     );
