@@ -53,9 +53,6 @@ function postPayment(target, option) {
     fd.append(key, payload[key]);
   });
 
-  console.log(payload);
-
-  return false;
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
@@ -74,8 +71,6 @@ function postPayment(target, option) {
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
         window.location.replace("/thank-you-for-your-payment/");
-
-        console.log("Hi");
       } else return false;
     },
   });

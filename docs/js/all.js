@@ -612,10 +612,9 @@ $("#paymentAmount").keyup(
         event.preventDefault();
         event.stopPropagation();
         form.classList.add("was-validated");
-        console.log("here 0");
+
         if (!$(this).find(".paymentConsentCheck").is(":checked")) return false;
 
-        console.log("here");
         postPayment(
           $(this).attr("id"),
           $(this).find(".payment-btn").attr("paymnt")
@@ -764,9 +763,6 @@ function postPayment(target, option) {
     fd.append(key, payload[key]);
   });
 
-  console.log(payload);
-
-  return false;
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
@@ -785,8 +781,6 @@ function postPayment(target, option) {
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
         window.location.replace("/thank-you-for-your-payment/");
-
-        console.log("Hi");
       } else return false;
     },
   });
