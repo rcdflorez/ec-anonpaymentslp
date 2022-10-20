@@ -584,9 +584,11 @@ $("#paymentAmount").keyup(
     amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
     if (amount < 5 || amount > 20000) {
+      $("p.error-1").removeClass("d-none");
       paymentAmount.style.cssText = "border-color: red !important";
       return false;
     } else {
+      $("p.error-1").addClass("d-none");
       paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
     }
   }, 500)
@@ -603,12 +605,10 @@ $("#paymentAmount").keyup(
     form.addEventListener(
       "submit",
       function (event) {
-        /*
+        $("p.error").addClass("d-none");
         if (!form.checkValidity()) {
-          
+          $("p.error-1").removeClass("d-none");
         }
-        
- */
         event.preventDefault();
         event.stopPropagation();
         form.classList.add("was-validated");
@@ -725,8 +725,10 @@ function postPayment(target, option) {
 
   if (amount < 5 || amount > 20000) {
     paymentAmount.style.cssText = "border-color: red !important";
+    $("p.error-1").removeClass("d-none");
     return false;
   } else {
+    $("p.error-1").addClass("d-none");
     paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
   }
 
@@ -770,7 +772,19 @@ function postPayment(target, option) {
     dataType: "json",
     contentType: false,
     processData: false,
+
+    beforeSend: function () {
+      $("h5.cta-btn")
+        .html(
+          'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
+        )
+        .parent()
+        .addClass("disabled");
+    },
+
     success: function (response) {
+      $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+
       if (
         response.completeSuccess == true &&
         response.customerFound == true &&
@@ -781,7 +795,15 @@ function postPayment(target, option) {
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
         window.location.replace("/thank-you-for-your-payment/");
-      } else return false;
+      } else {
+        console.log(response);
+        $("p.error-2").removeClass("d-none");
+        return false;
+      }
+    },
+    error: function (response) {
+      $("p.error-3").removeClass("d-none");
+      console.log(response);
     },
   });
 }

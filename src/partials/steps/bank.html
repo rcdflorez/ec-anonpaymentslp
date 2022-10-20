@@ -46,7 +46,7 @@
           class="form-control"
           type="text"
           required
-          pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
           class=""
           name="firstName"
           id="firstName"
@@ -121,6 +121,19 @@
     -->
 
     <partial src="paymentauth.html"></partial>
+
+    <p class="error-1 error mt-3 mb-0 d-none">
+      Please review the highlighted information above before submitting your
+      payment.
+    </p>
+    <p class="error-2 error mt-3 mb-0 d-none">
+      There was an error processing your payment. Please review your payment
+      information and try again.
+    </p>
+    <p class="error-3 error mt-3 mb-0 d-none">
+      We cannot process your payment at this time, please reach out to one of
+      our representatives.
+    </p>
 
     <div class="text-end">
       <button

@@ -34,9 +34,11 @@ $("#paymentAmount").keyup(
     amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
     if (amount < 5 || amount > 20000) {
+      $("p.error-1").removeClass("d-none");
       paymentAmount.style.cssText = "border-color: red !important";
       return false;
     } else {
+      $("p.error-1").addClass("d-none");
       paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
     }
   }, 500)
@@ -53,12 +55,10 @@ $("#paymentAmount").keyup(
     form.addEventListener(
       "submit",
       function (event) {
-        /*
+        $("p.error").addClass("d-none");
         if (!form.checkValidity()) {
-          
+          $("p.error-1").removeClass("d-none");
         }
-        
- */
         event.preventDefault();
         event.stopPropagation();
         form.classList.add("was-validated");

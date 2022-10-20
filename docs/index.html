@@ -160,7 +160,7 @@
                                     <label for="firstName">Email Address<span> *</span>
 
                                     </label>
-                                    <input class="form-control" type="text" required pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+                                    <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                                     class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
                                 </div>
                                 <div class="form-group col-12 col-md-4">
@@ -176,8 +176,8 @@
                                     <label for="address">Address <span> *</span>
 
                                     </label>
-                                    <input class="form-control" type="text" required pattern="^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$"
-                                    class="" name="address" id="address" jsonKey="Address" />
+                                    <input class="form-control" type="text" required pattern="^.{6,}$" class=""
+                                    name="address" id="address" jsonKey="Address" />
                                 </div>
                             </div>
                             <div class="row d-flex text-start my-4">
@@ -233,10 +233,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
+                                payment.</p>
+                            <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
+                                information and try again.</p>
+                            <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
+                                our representatives.</p>
                             <div class="text-end">
                                 <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Debit"
                                 id="debit-button">
-                                     <h5 class="m-0">Make Payment</h5>
+                                     <h5 class="m-0 cta-btn">Make Payment</h5>
                                 </button>
                             </div>
                         </form>
@@ -269,7 +275,7 @@
                                     <label for="firstName">Email Address<span> *</span>
 
                                     </label>
-                                    <input class="form-control" type="text" required pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+                                    <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                                     class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
                                 </div>
                                 <div class="form-group col-12 col-md-4">
@@ -343,6 +349,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
+                                payment.</p>
+                            <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
+                                information and try again.</p>
+                            <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
+                                our representatives.</p>
                             <div class="text-end">
                                 <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Bank"
                                 id="bank-button">
