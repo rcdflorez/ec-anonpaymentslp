@@ -75,15 +75,18 @@ $("#paymentAmount").keyup(
   });
 })();
 
+let formMonth = 0;
+let formYear = 0;
+
 function formatCCExpDate(e) {
-  var inputChar = String.fromCharCode(event.keyCode);
-  var code = event.keyCode;
+  var inputChar = String.fromCharCode(e.keyCode);
+  var code = e.keyCode;
   var allowedKeys = [8];
   if (allowedKeys.indexOf(code) !== -1) {
     return;
   }
 
-  event.target.value = event.target.value
+  e.target.value = e.target.value
     .replace(
       /^([1-9]\/|[2-9])$/g,
       "0$1/" // 3 > 03/
@@ -112,6 +115,31 @@ function formatCCExpDate(e) {
       /\/\//g,
       "/" // Prevent entering more than 1 `/`
     );
+
+  const currentMonth = new Date().getMonth() + 1;
+  const currentYear = parseInt(
+    new Date().getFullYear().toString().substr(-2),
+    10
+  );
+
+  if (e.target.value != "") {
+    formMonth = parseInt(e.target.value.split("/")[0], 10);
+    formYear = parseInt(e.target.value.split("/")[1], 10);
+  }
+
+  console.log(currentMonth);
+  console.log(currentYear);
+  console.log(formMonth);
+  console.log(formYear);
+
+  if (
+    formYear > currentYear ||
+    (formYear == currentYear && formMonth >= currentMonth)
+  ) {
+    e.target.setCustomValidity("");
+  } else {
+    e.target.setCustomValidity("Invalid");
+  }
 }
 
 $("ul.paymentOptionsNav a").on("click", function () {

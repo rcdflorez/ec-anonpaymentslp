@@ -55,6 +55,8 @@ function postPayment(target, option) {
     fd.append(key, payload[key]);
   });
 
+  if (!document.querySelector(`#${target}`).checkValidity()) return false;
+
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
