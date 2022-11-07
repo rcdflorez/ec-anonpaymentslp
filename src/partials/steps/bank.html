@@ -14,11 +14,12 @@
 
         <input
           class="form-control"
-          class=""
+          type="text"
           name="firstName"
           id="firstName"
           required
           pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+          jsonKey="CustomerFirstName"
         />
       </div>
 
@@ -33,6 +34,7 @@
           class=""
           name="lastname"
           id="lastname"
+          jsonKey="CustomerLastName"
         />
       </div>
     </div>
@@ -44,15 +46,16 @@
           class="form-control"
           type="text"
           required
-          pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
           class=""
           name="firstName"
           id="firstName"
+          jsonKey="CustomerEmail"
         />
       </div>
 
       <div class="form-group col-12 col-md-4">
-        <label for="lastname">Last 4 Digigts of SNN<span> *</span></label>
+        <label for="lastname">Last 4 Digits of SSN<span> *</span></label>
 
         <input
           class="form-control"
@@ -62,6 +65,7 @@
           class=""
           name="lastname"
           id="lastname"
+          jsonKey="Last4SSN"
         />
       </div>
     </div>
@@ -75,6 +79,7 @@
           pattern="^[0-9]{7,20}$"
           class="form-control"
           id="bank_account_number"
+          jsonKey="BankAccountNumber"
         />
       </div>
       <div class="form-group col-md-6">
@@ -87,13 +92,19 @@
           maxlength="9"
           class="form-control"
           id="routing_number"
+          jsonKey="BankRoutingNumber"
         />
       </div>
     </div>
     <div class="row text-start my-4">
       <div class="form-group col-12">
         <label for="stp5anumber">Bank Name</label>
-        <input type="text" class="form-control" id="bank_name" />
+        <input
+          type="text"
+          class="form-control"
+          id="bank_name"
+          jsonKey="BankName"
+        />
       </div>
     </div>
 
@@ -111,13 +122,27 @@
 
     <partial src="paymentauth.html"></partial>
 
+    <p class="error-1 error mt-3 mb-0 d-none">
+      Please review the highlighted information above before submitting your
+      payment.
+    </p>
+    <p class="error-2 error mt-3 mb-0 d-none">
+      There was an error processing your payment. Please review your payment
+      information and try again. If the problem persists, don't hesitate to
+      contact one of our service representatives.
+    </p>
+    <p class="error-3 error mt-3 mb-0 d-none">
+      We cannot process your payment at this time, please reach out to one of
+      our representatives.
+    </p>
+
     <div class="text-end">
       <button
         class="btn btn-access my-2 my-md-5 payment-btn"
         paymnt="Bank"
         id="bank-button"
       >
-        <h5 class="m-0">Make Payment</h5>
+        <h5 class="m-0 cta-btn">Make Payment</h5>
       </button>
     </div>
   </form>

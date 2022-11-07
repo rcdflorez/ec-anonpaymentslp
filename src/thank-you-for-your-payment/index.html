@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="icon" href="../img/icon.png" />
+        <title>Thank you for your payment</title>
+        <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        <header class="">
+            <div class="container-logo mx-sm-5 text-center"> <a href="/"><img
+            src="../img/explore_credit_color_RGB.png"
+            alt="LOGO"
+            width="100"
+        /></a>
+
+            </div>
+       
+
+        </header>
+    </body>
+
+</html>
+<div class="container-md">
+    <div class="row border-bottom">
+         <h2 class="text-center py-3">Payment successful!</h2>
+
+    </div>
+</div>
+<section class="berbix">
+    <div class="container-md my-4 text-center main-container">
+      
+          <svg class="checkmark mx-auto my-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+           </svg>
+           <h1 class="my-sm-4 heading-title col-md-11 mx-auto mb-5">
+             <script>
+                $("h1.heading-title").html(`
+               <h1>
+               ${localStorage.getItem('firstName')}, we’ve confirmed your $${localStorage.getItem('paidAmount')} payment.
+               </h1>
+                `)               
+               
+             </script>
+             
+        
+
+        
+     
+   
+    </div>
+    <div class="container-md my-3 text-center contact px-sm-4">If you'd like to speak with one of our customer service representatives,
+        please call or text<a href="tel:844-355-5626"> 844-355-5626 </a>
+8am EST
+        – 9pm EST (Every Day). You can also email our team at <a href="mailto:support@explorecredit.com">support@explorecredit.com</a>.</div>
+</section>
+<footer class="footer container text-center ">
+    <p>© Copyrigth 2022 Explore Credit.</p>
+</footer>
+</body>
+
+</html>

@@ -133,8 +133,8 @@ var cardValidator = (function (e) {
       f = function (e, r) {
         e &&
           (r
-            ? (e.classList.remove(""), e.classList.add(""))
-            : (e.classList.add(""), e.classList.remove("")));
+            ? (e.classList.remove("is-valid"), e.classList.add("is-valid"))
+            : (e.classList.add("is-valid"), e.classList.remove("is-valid")));
       };
     (r.init = m), (r.defaults = c), (r.predictCard = l), (r.validateCard = p);
   },

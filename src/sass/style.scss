@@ -453,17 +453,17 @@ div.contact p {
 }
 
 .spinner {
-  margin: 10px auto;
-  width: 40px;
-  height: 40px;
+  margin: 0px auto;
+  width: 20px;
+  height: 20px;
   position: relative;
 }
 
 .cube1,
 .cube2 {
-  background-color: #162449;
-  width: 15px;
-  height: 15px;
+  background-color: white;
+  width: 5px;
+  height: 5px;
   position: absolute;
   top: 0;
   left: 0;
@@ -479,13 +479,13 @@ div.contact p {
 
 @-webkit-keyframes sk-cubemove {
   25% {
-    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(10px) rotate(-90deg) scale(0.5);
   }
   50% {
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(10px) translateY(10px) rotate(-180deg);
   }
   75% {
-    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg)
+    -webkit-transform: translateX(0px) translateY(10px) rotate(-270deg)
       scale(0.5);
   }
   100% {
@@ -495,20 +495,20 @@ div.contact p {
 
 @keyframes sk-cubemove {
   25% {
-    transform: translateX(42px) rotate(-90deg) scale(0.5);
-    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    transform: translateX(10px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(10px) rotate(-90deg) scale(0.5);
   }
   50% {
-    transform: translateX(42px) translateY(42px) rotate(-179deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    transform: translateX(10px) translateY(10px) rotate(-179deg);
+    -webkit-transform: translateX(10px) translateY(10px) rotate(-179deg);
   }
   50.1% {
-    transform: translateX(42px) translateY(42px) rotate(-180deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    transform: translateX(10px) translateY(10px) rotate(-180deg);
+    -webkit-transform: translateX(10px) translateY(10px) rotate(-180deg);
   }
   75% {
-    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg)
+    transform: translateX(0px) translateY(10px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(10px) rotate(-270deg)
       scale(0.5);
   }
   100% {
@@ -792,4 +792,16 @@ span.paypal-logo {
   i:last-child {
     color: #179bd7 !important;
   }
+}
+
+.was-validated .form-check-input:valid:checked,
+.form-check-input.is-valid:checked {
+  background-color: white !important;
+}
+
+p.error {
+  color: red;
+  font-weight: 400;
+  text-align: end;
+  border-bottom: none !important;
 }

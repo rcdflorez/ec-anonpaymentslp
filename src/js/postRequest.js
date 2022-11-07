@@ -1,30 +1,93 @@
-let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
+//let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
+const baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
-let paymentEndPoint = `${baseURL}API/ProcessAnonymous${paymentMethod}PaymentRequest?`;
+
 let payload = {};
+let amount = 0;
 
-$(".payment-btn").click(function (e) {
-  e.preventDefault();
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const campaign = urlParams.get("utm_campaign");
+const loanID = urlParams.get("loanId");
 
-  paymentMethod = this.getAttribute("paymnt");
+function postPayment(target, option) {
+  amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
-  $activeForm = $(this).closest("form").attr("id");
+  if (amount < 5 || amount > 20000) {
+    paymentAmount.style.cssText = "border-color: red !important";
+    $("p.error-1").removeClass("d-none");
+    return false;
+  } else {
+    $("p.error-1").addClass("d-none");
+    paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
+  }
 
-  $(`#${$activeForm} input[type=text]`).each(function () {
+  $(`#${target} input[type=text]`).each(function () {
     payload[$(this).attr("jsonKey")] = $(this).val();
   });
 
-  console.log(payload);
+  if (typeof payload["DebitCardExp"] !== "undefined") {
+    let expDate = payload["DebitCardExp"];
+
+    payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
+      expDate.split("/")[1]
+    }`;
+  }
+
+  payload["LoanId"] = loanID;
+  payload["SessionId"] = `${
+    payload["Last4SSN"]
+  }-${campaign}-${new Date().toJSON()}`;
+  payload["PaymentAmount"] = amount;
+
+  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
+
+  var fd = new FormData();
+  Object.keys(payload).map((key) => {
+    fd.append(key, payload[key]);
+  });
+
+  if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
   $.ajax({
     url: paymentEndPoint,
     type: "POST",
-    data: payload,
+    data: fd,
     dataType: "json",
     contentType: false,
     processData: false,
+
+    beforeSend: function () {
+      $("h5.cta-btn")
+        .html(
+          'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
+        )
+        .parent()
+        .addClass("disabled");
+    },
+
     success: function (response) {
+      $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+
+      if (
+        response.completeSuccess == true &&
+        response.customerFound == true &&
+        response.paymentMethodValid == true &&
+        response.paymentSuccessful == true
+      ) {
+        localStorage.setItem("paidAmount", amount);
+        localStorage.setItem("firstName", payload["CustomerFirstName"]);
+
+        window.location.replace("/thank-you-for-your-payment/");
+      } else {
+        console.log(response);
+        $("p.error-2").removeClass("d-none");
+        return false;
+      }
+    },
+    error: function (response) {
+      $("p.error-3").removeClass("d-none");
       console.log(response);
     },
   });
-});
+}
