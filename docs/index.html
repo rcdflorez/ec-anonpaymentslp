@@ -25,72 +25,21 @@
             defer></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-masker/1.2.0/vanilla-masker.min.js"></script>
         </header>
-    </body>
+        <div class="container-md">
+            <div class="row border-bottom">
+                 <h2 class="text-center py-3">Make A Payment</h2>
 
-</html>
-<div class="container-md">
-    <div class="row border-bottom">
-         <h2 class="text-center py-3">Make A Payment</h2>
-
-    </div>
-</div>
-<section class="berbix">
-    <div class="container-md my-4 text-start nav-bar-container d-none d-sm-block">
-        <div class="row">
-            <div class="col-md-12 mx-0 px-0 mx-auto">
-                <ul class="paymentOptionsNav mx-0 px-0 text-center text-md-start">
-                    <li class="active-nav"> <a data-po="debit" href="#">Debit Card</a>
-
-                    </li>
-                    <li class="mx-5"><a data-po="bank" href="#">Bank Draft</a>
-                    </li>
-                    <li><a data-po="paypal" href="#">PayPal</a>
-                    </li>
-                </ul>
             </div>
         </div>
-    </div>
-    <div class="container-md my-4 text-center main-container">
-        <div class="row">
-            <div class="col-md-4 amount-box order-lg-1 order-lg-2">
-                <div class="border rounded container px-5">
-                    <div class="row">
-                         <h4 class="text-center pt-5">Enter your payment amount</h4>
-
-                    </div>
-                    <div class="row py-3">
-                        <input class="border rounded text-center" type="text" id="paymentAmount"
-                        placeholder="$0.00" /> <small class="px-0">Min. amount: $5, Max. amount: $20,000</small>
-
-                    </div>
-                    <div class="row border-top">
-                        <p>If your payment does not clear, a fee may be assessed. In the case of
-                            an early payment, your payment will be considered due until received.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="
-          container-md
-          my-4
-          text-start
-          mt-5
-          nav-bar-container
-          d-block d-sm-none
-        ">
+        <section class="berbix">
+            <div class="container-md my-4 text-start nav-bar-container d-none d-sm-block">
                 <div class="row">
                     <div class="col-md-12 mx-0 px-0 mx-auto">
-                        <ul class="
-                paymentOptionsNav
-                mx-0
-                px-0
-                text-center text-md-start
-                d-flex
-                justify-content-around
-              ">
+                        <ul class="paymentOptionsNav mx-0 px-0 text-center text-md-start">
                             <li class="active-nav"> <a data-po="debit" href="#">Debit Card</a>
 
                             </li>
-                            <li class=""><a data-po="bank" href="#">Bank Draft</a>
+                            <li class="mx-5"><a data-po="bank" href="#">Bank Draft</a>
                             </li>
                             <li><a data-po="paypal" href="#">PayPal</a>
                             </li>
@@ -98,219 +47,267 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 mx-auto px-0 order-lg-1">
-                <div class="px-3 px-sm-0" id="poContainer">
-                    <div class="debit-PO po-content col-12 mx-0 px-0">
-                        <form action="#" class="needs-validation form debit-payment-form" id="debitPaymentForm"
-                        novalidate>
-                             <h4 class="text-start">Card Information</h4>
-                            <div id="card-errors" role="alert"></div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-7">
-                                    <div class="row d-flex align-items-end">
-                                        <div class="col-10">
-                                            <label for="cardNumber">Debit Card Number<span> *</span>
+            <div class="container-md my-4 text-center main-container">
+                <div class="row">
+                    <div class="col-md-4 amount-box order-lg-1 order-lg-2">
+                        <div class="border rounded container px-5">
+                            <div class="row">
+                                 <h4 class="text-center pt-5">Enter your payment amount</h4>
+
+                            </div>
+                            <div class="row py-3">
+                                <input class="border rounded text-center" type="text" id="paymentAmount"
+                                placeholder="$0.00" /> <small class="px-0">Min. amount: $5, Max. amount: $20,000</small>
+
+                            </div>
+                            <div class="row border-top">
+                                <p>If your payment does not clear, a fee may be assessed. In the case of
+                                    an early payment, your payment will be considered due until received.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="
+          container-md
+          my-4
+          text-start
+          mt-5
+          nav-bar-container
+          d-block d-sm-none
+        ">
+                        <div class="row">
+                            <div class="col-md-12 mx-0 px-0 mx-auto">
+                                <ul class="
+                paymentOptionsNav
+                mx-0
+                px-0
+                text-center text-md-start
+                d-flex
+                justify-content-around
+              ">
+                                    <li class="active-nav"> <a data-po="debit" href="#">Debit Card</a>
+
+                                    </li>
+                                    <li class=""><a data-po="bank" href="#">Bank Draft</a>
+                                    </li>
+                                    <li><a data-po="paypal" href="#">PayPal</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 mx-auto px-0 order-lg-1">
+                        <div class="px-3 px-sm-0" id="poContainer">
+                            <div class="debit-PO po-content col-12 mx-0 px-0">
+                                <form action="#" class="needs-validation form debit-payment-form" id="debitPaymentForm"
+                                novalidate>
+                                     <h4 class="text-start">Card Information</h4>
+                                    <div id="card-errors" role="alert"></div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-7">
+                                            <div class="row d-flex align-items-end">
+                                                <div class="col-10">
+                                                    <label for="cardNumber">Debit Card Number<span> *</span>
+
+                                                    </label>
+                                                    <input pattern="^((4\d{3})|(5[1-5]\d{2})|(6011)|(34\d{1})|(37\d{1}))-?\s?\d{4}-?\s?\d{4}-?\s?\d{4}|3[4,7][\d\s-]{15}$"
+                                                    type="text" required id="card" class="form-control" jsonKey="DebitCardNumber"
+                                                    />
+                                                </div>
+                                                <div class="col-2">
+                                                    <div id="logo"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 col-md-3">
+                                            <label for="expration">Expiration<span> *</span>
 
                                             </label>
-                                            <input pattern="^((4\d{3})|(5[1-5]\d{2})|(6011)|(34\d{1})|(37\d{1}))-?\s?\d{4}-?\s?\d{4}-?\s?\d{4}|3[4,7][\d\s-]{15}$"
-                                            type="text" required id="card" class="form-control" jsonKey="DebitCardNumber"
+                                            <input pattern="^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$" class="form-control"
+                                            type="text" required id="card-exp" onkeyup="formatCCExpDate(event);" jsonKey="DebitCardExp"
+                                            maxlength="5" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-2">
+                                            <label for="cvv">CVV<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required id="card-cvc" pattern="^[0-9]{3,4}$"
+                                            jsonKey="DebitCardCvv" />
+                                        </div>
+                                    </div>
+                                     <h4 class="text-start">Billing Information</h4>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="firstName">First Name<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" class="" type="text" name="firstName" id="firstName"
+                                            required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" jsonKey="CustomerFirstName"
                                             />
                                         </div>
-                                        <div class="col-2">
-                                            <div id="logo"></div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="lastname">Last Name<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+                                            class="" name="lastname" id="lastname" jsonKey="CustomerLastName" />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-12 col-md-3">
-                                    <label for="expration">Expiration<span> *</span>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-8">
+                                            <label for="firstName">Email Address<span> *</span>
 
-                                    </label>
-                                    <input pattern="^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$" class="form-control"
-                                    type="text" required id="card-exp" onkeyup="formatCCExpDate(event);" jsonKey="DebitCardExp"
-                                    maxlength="5" />
-                                </div>
-                                <div class="form-group col-12 col-md-2">
-                                    <label for="cvv">CVV<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                            class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-4">
+                                            <label for="lastname">Last 4 Digits of SSN<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" required id="card-cvc" pattern="^[0-9]{3,4}$"
-                                    jsonKey="DebitCardCvv" />
-                                </div>
-                            </div>
-                             <h4 class="text-start">Billing Information</h4>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="firstName">First Name<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" class="" type="text" name="firstName" id="firstName"
-                                    required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" jsonKey="CustomerFirstName"
-                                    />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="lastname">Last Name<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-                                    class="" name="lastname" id="lastname" jsonKey="CustomerLastName" />
-                                </div>
-                            </div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-8">
-                                    <label for="firstName">Email Address<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                                    class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
-                                </div>
-                                <div class="form-group col-12 col-md-4">
-                                    <label for="lastname">Last 4 Digits of SSN<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" pattern="^[0-9]{4}$" required
-                                    class="" name="lastname" id="lastname" jsonKey="Last4SSN" />
-                                </div>
-                            </div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12">
-                                    <label for="address">Address <span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^.{6,}$" class=""
-                                    name="address" id="address" jsonKey="Address" />
-                                </div>
-                            </div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-7">
-                                    <label for="city">City<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required class="" name="city"
-                                    id="city" jsonKey="City" />
-                                </div>
-                                <div class="form-group col-12 col-md-3">
-                                    <label for="State">State<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required class="" name="State"
-                                    id="State" jsonKey="State" />
-                                </div>
-                                <div class="form-group col-12 col-md-2">
-                                    <label for="zip">Zip<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" required class="" name="zip" id="zip"
-                                    jsonKey="Zip" pattern="^\d{5}(?:[-\s]\d{4})?$" />
-                                </div>
-                            </div>
-                            <div class="container border paymentauth-container">
-                                <div class="row">
-                                     <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
-
-                                    <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
-                                        <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
-                                        required type="checkbox" name="" id="paymentConsentCheck" />
+                                            </label>
+                                            <input class="form-control" type="text" pattern="^[0-9]{4}$" required
+                                            class="" name="lastname" id="lastname" jsonKey="Last4SSN" />
+                                        </div>
                                     </div>
-                                    <div class="col-11">
-                                        <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
-                                            This payment is for the repayment of a loan I have with Explore Credit.
-                                            I understand that because this is an electronic transaction, these funds
-                                            may be withdrawn from my account as soon as the above noted transaction
-                                            date. In the case of recurring payments, I understand that this authorization
-                                            will remain in effect until the schedule end date, or until I cancel it
-                                            in writing, whichever comes first, and I agree to notify Explore Credit
-                                            in writing of any changes in my account information or termination of this
-                                            authorization immediately. If the above noted payment date falls on a weekend
-                                            or holiday, I understand that the payment may be executed on the next business
-                                            day. In the case of this transaction being rejected for Non Sufficient
-                                            Funds (NSF) I understand that Explore Credit may at its discretion attempt
-                                            to process the charge again within 30 days. I certify that I am an authorized
-                                            user of this debit card or bank account, and that I will not dispute the
-                                            payment with my Bank, so long as the transaction corresponds to the terms
-                                            indicated below. Further, this authorization supersedes any previously
-                                            provided authorization to withdraw funds using either this debit card or
-                                            bank account.</p>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12">
+                                            <label for="address">Address <span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^.{6,}$" class=""
+                                            name="address" id="address" jsonKey="Address" />
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-7">
+                                            <label for="city">City<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required class="" name="city"
+                                            id="city" jsonKey="City" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-3">
+                                            <label for="State">State<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required class="" name="State"
+                                            id="State" jsonKey="State" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-2">
+                                            <label for="zip">Zip<span> *</span>
+
+                                            </label>
+                                            <input class="form-control" type="text" required class="" name="zip" id="zip"
+                                            jsonKey="Zip" pattern="^\d{5}(?:[-\s]\d{4})?$" />
+                                        </div>
+                                    </div>
+                                    <div class="container border paymentauth-container">
+                                        <div class="row">
+                                             <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
+
+                                            <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
+                                                <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
+                                                required type="checkbox" name="" id="paymentConsentCheck" />
+                                            </div>
+                                            <div class="col-11">
+                                                <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
+                                                    This payment is for the repayment of a loan I have with Explore Credit.
+                                                    I understand that because this is an electronic transaction, these funds
+                                                    may be withdrawn from my account as soon as the above noted transaction
+                                                    date. In the case of recurring payments, I understand that this authorization
+                                                    will remain in effect until the schedule end date, or until I cancel it
+                                                    in writing, whichever comes first, and I agree to notify Explore Credit
+                                                    in writing of any changes in my account information or termination of this
+                                                    authorization immediately. If the above noted payment date falls on a weekend
+                                                    or holiday, I understand that the payment may be executed on the next business
+                                                    day. In the case of this transaction being rejected for Non Sufficient
+                                                    Funds (NSF) I understand that Explore Credit may at its discretion attempt
+                                                    to process the charge again within 30 days. I certify that I am an authorized
+                                                    user of this debit card or bank account, and that I will not dispute the
+                                                    payment with my Bank, so long as the transaction corresponds to the terms
+                                                    indicated below. Further, this authorization supersedes any previously
+                                                    provided authorization to withdraw funds using either this debit card or
+                                                    bank account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
+                                        payment.</p>
+                                    <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
+                                        information and try again. If the problem persists, don't hesitate to contact
+                                        one of our service representatives.</p>
+                                    <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
+                                        our representatives.</p>
+                                    <div class="text-end">
+                                        <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Debit"
+                                        id="debit-button">
+                                             <h5 class="m-0 cta-btn">Make Payment</h5>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
-                                payment.</p>
-                            <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
-                                information and try again. If the problem persists, don't hesitate to contact
-                                one of our service representatives.</p>
-                            <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
-                                our representatives.</p>
-                            <div class="text-end">
-                                <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Debit"
-                                id="debit-button">
-                                     <h5 class="m-0 cta-btn">Make Payment</h5>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="bank-PO po-content col-12 mx-0 px-0 d-none">
-                        <form action="#" class="needs-validation form bank-payment-form" novalidate
-                        id="bankPaymentForm">
-                             <h4 class="text-start">Bank Account Details</h4>
+                            <div class="bank-PO po-content col-12 mx-0 px-0 d-none">
+                                <form action="#" class="needs-validation form bank-payment-form" novalidate
+                                id="bankPaymentForm">
+                                     <h4 class="text-start">Bank Account Details</h4>
 
-                            <div id="card-errors" role="alert"></div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="firstName">First Name<span> *</span>
+                                    <div id="card-errors" role="alert"></div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="firstName">First Name<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" name="firstName" id="firstName"
-                                    required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" jsonKey="CustomerFirstName"
-                                    />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="lastname">Last Name<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" name="firstName" id="firstName"
+                                            required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" jsonKey="CustomerFirstName"
+                                            />
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="lastname">Last Name<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-                                    class="" name="lastname" id="lastname" jsonKey="CustomerLastName" />
-                                </div>
-                            </div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-8">
-                                    <label for="firstName">Email Address<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+                                            class="" name="lastname" id="lastname" jsonKey="CustomerLastName" />
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-8">
+                                            <label for="firstName">Email Address<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                                    class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
-                                </div>
-                                <div class="form-group col-12 col-md-4">
-                                    <label for="lastname">Last 4 Digits of SSN<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                            class="" name="firstName" id="firstName" jsonKey="CustomerEmail" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-4">
+                                            <label for="lastname">Last 4 Digits of SSN<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" pattern="^[0-9]{4}$" required
-                                    class="" name="lastname" id="lastname" jsonKey="Last4SSN" />
-                                </div>
-                            </div>
-                            <div class="row text-start my-4">
-                                <div class="form-group col-md-6">
-                                    <label for="stp5anumber">Account Number<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" pattern="^[0-9]{4}$" required
+                                            class="" name="lastname" id="lastname" jsonKey="Last4SSN" />
+                                        </div>
+                                    </div>
+                                    <div class="row text-start my-4">
+                                        <div class="form-group col-md-6">
+                                            <label for="stp5anumber">Account Number<span> *</span>
 
-                                    </label>
-                                    <input type="text" required pattern="^[0-9]{7,20}$" class="form-control"
-                                    id="bank_account_number" jsonKey="BankAccountNumber" />
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="stp5rnumber">Routing Number<span> *</span>
+                                            </label>
+                                            <input type="text" required pattern="^[0-9]{7,20}$" class="form-control"
+                                            id="bank_account_number" jsonKey="BankAccountNumber" />
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="stp5rnumber">Routing Number<span> *</span>
 
-                                    </label>
-                                    <input required pattern="^[0-9]{9}$" type="text" maxlength="9" class="form-control"
-                                    id="routing_number" jsonKey="BankRoutingNumber" />
-                                </div>
-                            </div>
-                            <div class="row text-start my-4">
-                                <div class="form-group col-12">
-                                    <label for="stp5anumber">Bank Name</label>
-                                    <input type="text" class="form-control" id="bank_name"
-                                    jsonKey="BankName" />
-                                </div>
-                            </div>
-                            <!-- <div class="step-1 py-2 col-11 mx-auto" id="berbixArea">
+                                            </label>
+                                            <input required pattern="^[0-9]{9}$" type="text" maxlength="9" class="form-control"
+                                            id="routing_number" jsonKey="BankRoutingNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="row text-start my-4">
+                                        <div class="form-group col-12">
+                                            <label for="stp5anumber">Bank Name</label>
+                                            <input type="text" class="form-control" id="bank_name"
+                                            jsonKey="BankName" />
+                                        </div>
+                                    </div>
+                                    <!-- <div class="step-1 py-2 col-11 mx-auto" id="berbixArea">
       <div class="BerBix-place-holder justify-content-center">
         <div class="spinner">
           <div class="cube1"></div>
@@ -320,90 +317,90 @@
     </div>
 
     -->
-                            <div class="container border paymentauth-container">
-                                <div class="row">
-                                     <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
+                                    <div class="container border paymentauth-container">
+                                        <div class="row">
+                                             <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
 
-                                    <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
-                                        <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
-                                        required type="checkbox" name="" id="paymentConsentCheck" />
+                                            <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
+                                                <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
+                                                required type="checkbox" name="" id="paymentConsentCheck" />
+                                            </div>
+                                            <div class="col-11">
+                                                <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
+                                                    This payment is for the repayment of a loan I have with Explore Credit.
+                                                    I understand that because this is an electronic transaction, these funds
+                                                    may be withdrawn from my account as soon as the above noted transaction
+                                                    date. In the case of recurring payments, I understand that this authorization
+                                                    will remain in effect until the schedule end date, or until I cancel it
+                                                    in writing, whichever comes first, and I agree to notify Explore Credit
+                                                    in writing of any changes in my account information or termination of this
+                                                    authorization immediately. If the above noted payment date falls on a weekend
+                                                    or holiday, I understand that the payment may be executed on the next business
+                                                    day. In the case of this transaction being rejected for Non Sufficient
+                                                    Funds (NSF) I understand that Explore Credit may at its discretion attempt
+                                                    to process the charge again within 30 days. I certify that I am an authorized
+                                                    user of this debit card or bank account, and that I will not dispute the
+                                                    payment with my Bank, so long as the transaction corresponds to the terms
+                                                    indicated below. Further, this authorization supersedes any previously
+                                                    provided authorization to withdraw funds using either this debit card or
+                                                    bank account.</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-11">
-                                        <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
-                                            This payment is for the repayment of a loan I have with Explore Credit.
-                                            I understand that because this is an electronic transaction, these funds
-                                            may be withdrawn from my account as soon as the above noted transaction
-                                            date. In the case of recurring payments, I understand that this authorization
-                                            will remain in effect until the schedule end date, or until I cancel it
-                                            in writing, whichever comes first, and I agree to notify Explore Credit
-                                            in writing of any changes in my account information or termination of this
-                                            authorization immediately. If the above noted payment date falls on a weekend
-                                            or holiday, I understand that the payment may be executed on the next business
-                                            day. In the case of this transaction being rejected for Non Sufficient
-                                            Funds (NSF) I understand that Explore Credit may at its discretion attempt
-                                            to process the charge again within 30 days. I certify that I am an authorized
-                                            user of this debit card or bank account, and that I will not dispute the
-                                            payment with my Bank, so long as the transaction corresponds to the terms
-                                            indicated below. Further, this authorization supersedes any previously
-                                            provided authorization to withdraw funds using either this debit card or
-                                            bank account.</p>
+                                    <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
+                                        payment.</p>
+                                    <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
+                                        information and try again. If the problem persists, don't hesitate to contact
+                                        one of our service representatives.</p>
+                                    <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
+                                        our representatives.</p>
+                                    <div class="text-end">
+                                        <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Bank"
+                                        id="bank-button">
+                                             <h5 class="m-0 cta-btn">Make Payment</h5>
+
+                                        </button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                            <p class="error-1 error mt-3 mb-0 d-none">Please review the highlighted information above before submitting your
-                                payment.</p>
-                            <p class="error-2 error mt-3 mb-0 d-none">There was an error processing your payment. Please review your payment
-                                information and try again. If the problem persists, don't hesitate to contact
-                                one of our service representatives.</p>
-                            <p class="error-3 error mt-3 mb-0 d-none">We cannot process your payment at this time, please reach out to one of
-                                our representatives.</p>
-                            <div class="text-end">
-                                <button class="btn btn-access my-2 my-md-5 payment-btn" paymnt="Bank"
-                                id="bank-button">
-                                     <h5 class="m-0 cta-btn">Make Payment</h5>
+                            <div class="paypal-PO po-content col-12 mx-0 px-0 d-none">
+                                <form action="#" class="needs-validation form" novalidate>
+                                     <h4 class="text-start">PayPal Payment</h4>
 
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="paypal-PO po-content col-12 mx-0 px-0 d-none">
-                        <form action="#" class="needs-validation form" novalidate>
-                             <h4 class="text-start">PayPal Payment</h4>
+                                    <div id="card-errors" role="alert"></div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="firstName">First Name<span> *</span>
 
-                            <div id="card-errors" role="alert"></div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="firstName">First Name<span> *</span>
+                                            </label>
+                                            <input class="form-control" class="" name="firstName" id="firstName" required
+                                            pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="lastname">Last Name<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" class="" name="firstName" id="firstName" required
-                                    pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="lastname">Last Name<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+                                            class="" name="lastname" id="lastname" />
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex text-start my-4">
+                                        <div class="form-group col-12 col-md-8">
+                                            <label for="firstName">Email Address<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-                                    class="" name="lastname" id="lastname" />
-                                </div>
-                            </div>
-                            <div class="row d-flex text-start my-4">
-                                <div class="form-group col-12 col-md-8">
-                                    <label for="firstName">Email Address<span> *</span>
+                                            </label>
+                                            <input class="form-control" type="text" required pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
+                                            class="" name="firstName" id="firstName" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-4">
+                                            <label for="lastname">Last 4 Digits of SSN<span> *</span>
 
-                                    </label>
-                                    <input class="form-control" type="text" required pattern="^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$"
-                                    class="" name="firstName" id="firstName" />
-                                </div>
-                                <div class="form-group col-12 col-md-4">
-                                    <label for="lastname">Last 4 Digits of SSN<span> *</span>
-
-                                    </label>
-                                    <input class="form-control" type="text" pattern="^[0-9]{4}$" required
-                                    class="" name="lastname" id="lastname" />
-                                </div>
-                            </div>
-                            <!-- <p class="text-start text-disclaimer">
+                                            </label>
+                                            <input class="form-control" type="text" pattern="^[0-9]{4}$" required
+                                            class="" name="lastname" id="lastname" />
+                                        </div>
+                                    </div>
+                                    <!-- <p class="text-start text-disclaimer">
       *Note that this information is required for verification purposes,
       however, you have alternatives to debit card payment. Please contact us at
       <a href="">844-355-5626</a> or
@@ -413,55 +410,55 @@
 
 
     -->
-                            <div class="container border paymentauth-container">
-                                <div class="row">
-                                     <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
+                                    <div class="container border paymentauth-container">
+                                        <div class="row">
+                                             <h6 class="paymentauth-title mt-3 text-start">Payment Authorization</h6>
 
-                                    <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
-                                        <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
-                                        required type="checkbox" name="" id="paymentConsentCheck" />
+                                            <div class="col-1 mx-0 px-0 px-0 px-sm-4 mr-sm-0 pr-sm-0">
+                                                <input class="form-control px-sm-3 form-check-input paymentConsentCheck"
+                                                required type="checkbox" name="" id="paymentConsentCheck" />
+                                            </div>
+                                            <div class="col-11">
+                                                <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
+                                                    This payment is for the repayment of a loan I have with Explore Credit.
+                                                    I understand that because this is an electronic transaction, these funds
+                                                    may be withdrawn from my account as soon as the above noted transaction
+                                                    date. In the case of recurring payments, I understand that this authorization
+                                                    will remain in effect until the schedule end date, or until I cancel it
+                                                    in writing, whichever comes first, and I agree to notify Explore Credit
+                                                    in writing of any changes in my account information or termination of this
+                                                    authorization immediately. If the above noted payment date falls on a weekend
+                                                    or holiday, I understand that the payment may be executed on the next business
+                                                    day. In the case of this transaction being rejected for Non Sufficient
+                                                    Funds (NSF) I understand that Explore Credit may at its discretion attempt
+                                                    to process the charge again within 30 days. I certify that I am an authorized
+                                                    user of this debit card or bank account, and that I will not dispute the
+                                                    payment with my Bank, so long as the transaction corresponds to the terms
+                                                    indicated below. Further, this authorization supersedes any previously
+                                                    provided authorization to withdraw funds using either this debit card or
+                                                    bank account.</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-11">
-                                        <p class="text-start paymentauth-copy">I authorize my financial institution to honor this electronic payment.
-                                            This payment is for the repayment of a loan I have with Explore Credit.
-                                            I understand that because this is an electronic transaction, these funds
-                                            may be withdrawn from my account as soon as the above noted transaction
-                                            date. In the case of recurring payments, I understand that this authorization
-                                            will remain in effect until the schedule end date, or until I cancel it
-                                            in writing, whichever comes first, and I agree to notify Explore Credit
-                                            in writing of any changes in my account information or termination of this
-                                            authorization immediately. If the above noted payment date falls on a weekend
-                                            or holiday, I understand that the payment may be executed on the next business
-                                            day. In the case of this transaction being rejected for Non Sufficient
-                                            Funds (NSF) I understand that Explore Credit may at its discretion attempt
-                                            to process the charge again within 30 days. I certify that I am an authorized
-                                            user of this debit card or bank account, and that I will not dispute the
-                                            payment with my Bank, so long as the transaction corresponds to the terms
-                                            indicated below. Further, this authorization supersedes any previously
-                                            provided authorization to withdraw funds using either this debit card or
-                                            bank account.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-end"> <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>
+                                    <div class="text-end"> <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>
  <i class="bi bi-paypal">Pay with PayPal </i>
 
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container-md my-3 text-center contact px-sm-4">If you'd like to speak with one of our customer service representatives,
-        please call or text<a href="tel:844-355-5626"> 844-355-5626 </a>8am EST
-        – 9pm EST (Every Day). You can also email our team at <a href="mailto:support@explorecredit.com">support@explorecredit.com</a>.</div>
-</section>
-<footer class="footer container text-center ">
-    <p>© Copyright 2022 Explore Credit.</p>
-</footer>
-<script src="./js/all.js"></script>
-<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=82c88dd8"></script>
-</body>
+            <div class="container-md my-3 text-center contact px-sm-4">If you'd like to speak with one of our customer service representatives,
+                please call or text<a href="tel:844-355-5626"> 844-355-5626 </a>8am EST
+                – 9pm EST (Every Day). You can also email our team at <a href="mailto:support@explorecredit.com">support@explorecredit.com</a>.</div>
+        </section>
+        <footer class="footer container text-center ">
+            <p>© Copyright 2022 Explore Credit.</p>
+        </footer>
+        <script src="./js/all.js"></script>
+        <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=82c88dd8"></script>
+    </body>
 
 </html>
