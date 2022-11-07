@@ -742,9 +742,9 @@ let paymentMethod = ""; // it may be Bank or Debit
 
 let payload = {};
 let amount = 0;
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-
 const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
 
@@ -759,13 +759,6 @@ function postPayment(target, option) {
     $("p.error-1").addClass("d-none");
     paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
   }
-
-  console.log(target);
-  console.log(option);
-
-  //paymentMethod = this.getAttribute("paymnt");
-
-  //$activeForm = $(this).closest("form").attr("id");
 
   $(`#${target} input[type=text]`).each(function () {
     payload[$(this).attr("jsonKey")] = $(this).val();
@@ -783,10 +776,9 @@ function postPayment(target, option) {
   payload["SessionId"] = `${
     payload["Last4SSN"]
   }-${campaign}-${new Date().toJSON()}`;
+  payload["PaymentAmount"] = amount;
 
   let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
-
-  payload["PaymentAmount"] = amount;
 
   var fd = new FormData();
   Object.keys(payload).map((key) => {
