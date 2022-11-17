@@ -751,6 +751,8 @@ const loanID = urlParams.get("loanId");
 function postPayment(target, option) {
   amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
+  //debugger;
+
   if (amount < 5 || amount > 20000) {
     paymentAmount.style.cssText = "border-color: red !important";
     $("p.error-1").removeClass("d-none");
@@ -780,10 +782,21 @@ function postPayment(target, option) {
 
   let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
+  /* TEMP DATA */
+
+  payload["CustomerLastName"] = "PTest139";
+  payload["CustomerFirstName"] = "PTest139";
+  /* END OF TEMP DATA */
+
   var fd = new FormData();
   Object.keys(payload).map((key) => {
     fd.append(key, payload[key]);
   });
+
+  console.log(fd);
+  console.log(payload);
+
+  //return false;
 
   if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
@@ -808,15 +821,20 @@ function postPayment(target, option) {
       $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
 
       if (
-        response.completeSuccess == true &&
-        response.customerFound == true &&
-        response.paymentMethodValid == true &&
-        response.paymentSuccessful == true
+        (response.completeSuccess == true &&
+          response.customerFound == true &&
+          response.paymentMethodValid == true &&
+          response.paymentSuccessful == true) ||
+        response.indexOf("paypal.com/checkoutnow?token") > -1
       ) {
         localStorage.setItem("paidAmount", amount);
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-        window.location.replace("/thank-you-for-your-payment/");
+        if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+          location.href = response;
+        } else {
+          window.location.replace("/thank-you-for-your-payment/");
+        }
       } else {
         console.log(response);
         $("p.error-2").removeClass("d-none");

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B5C98EGV0J"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+      integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const campaign = urlParams.get("utm_campaign");
+        const PayerInfo = urlParams.get("PayerInfo");
+        const Token = urlParams.get("Token");
+        const PayerId = urlParams.get("PayerId");
+
+        if (
+          PayerId != "" &&
+          PayerId != undefined &&
+          PayerId != null &&
+          Token != "" &&
+          Token != undefined &&
+          Token != null
+        ) {
+          $.ajax({
+            type: "GET",
+            url: "https://staginglogin.explorecredit.com/PaypalResult?handler=PaymentSuccess",
+            contentType: "application/json",
+            data: {
+              PayerInfo: PayerInfo,
+              Token: Token,
+              PayerId: PayerId,
+            },
+            dataType: "json",
+            success: function (response) {
+              if (response == "Exception") {
+                $(".container-xl").html(
+                  "Error while processing your payment. <a href='/Login'>Click Here</a> to Go To Customer Portal."
+                );
+              } else {
+                location.href = response;
+              }
+            },
+            failure: function (response) {},
+            error: function (error) {
+              console.log(error);
+            },
+          });
+        }
+      });
+    </script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        color: #6c757d !important;
+        font-family: Montserrat, sans-serif;
+      }
+      .container-xl {
+        font-size: xx-large;
+        font-weight: bold;
+        color: black !important;
+      }
+    </style>
+  </head>
+
+  <body class="d-flex align-items-center">
+    <div class="container-xl">Please wait while we process your payment...</div>
+  </body>
+</html>
