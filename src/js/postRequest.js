@@ -65,10 +65,10 @@ function postPayment(target, option) {
     if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
     $.ajax({
-        url: `${paymentEndPoint}`,
+        url: `${proxy}${paymentEndPoint}`,
         type: "POST",
         data: fd,
-        dataType: "jsonp",
+        dataType: "json",
         contentType: false,
         processData: false,
 
