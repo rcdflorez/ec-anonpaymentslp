@@ -2,6 +2,8 @@
 const baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
 
+let proxy = "https://cors-anywhere.herokuapp.com/";
+
 let payload = {};
 let amount = 0;
 
@@ -11,101 +13,101 @@ const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
 
 function postPayment(target, option) {
-  amount = paymentAmount.value.replace(/[^0-9.]/g, "");
+    amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
-  //debugger;
+    //debugger;
 
-  if (amount < 5 || amount > 20000) {
-    paymentAmount.style.cssText = "border-color: red !important";
-    $("p.error-1").removeClass("d-none");
-    return false;
-  } else {
-    $("p.error-1").addClass("d-none");
-    paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
-  }
+    if (amount < 5 || amount > 20000) {
+        paymentAmount.style.cssText = "border-color: red !important";
+        $("p.error-1").removeClass("d-none");
+        return false;
+    } else {
+        $("p.error-1").addClass("d-none");
+        paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
+    }
 
-  $(`#${target} input[type=text]`).each(function () {
-    payload[$(this).attr("jsonKey")] = $(this).val();
-  });
+    $(`#${target} input[type=text]`).each(function() {
+        payload[$(this).attr("jsonKey")] = $(this).val();
+    });
 
-  if (typeof payload["DebitCardExp"] !== "undefined") {
-    let expDate = payload["DebitCardExp"];
+    if (typeof payload["DebitCardExp"] !== "undefined") {
+        let expDate = payload["DebitCardExp"];
 
-    payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
+        payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
       expDate.split("/")[1]
     }`;
-  }
+    }
 
-  payload["LoanId"] = loanID;
-  payload["SessionId"] = `${
+    payload["LoanId"] = loanID;
+    payload["SessionId"] = `${
     payload["Last4SSN"]
   }-${campaign}-${new Date().toJSON()}`;
-  payload["PaymentAmount"] = amount;
+    payload["PaymentAmount"] = amount;
 
-  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
+    let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
-  /* TEMP DATA */
+    /* TEMP DATA */
 
-  payload["CustomerLastName"] = "PTest139";
-  payload["CustomerFirstName"] = "PTest139";
-  /* END OF TEMP DATA */
+    payload["CustomerLastName"] = "PTest139";
+    payload["CustomerFirstName"] = "PTest139";
+    /* END OF TEMP DATA */
 
-  var fd = new FormData();
-  Object.keys(payload).map((key) => {
-    fd.append(key, payload[key]);
-  });
+    var fd = new FormData();
+    Object.keys(payload).map((key) => {
+        fd.append(key, payload[key]);
+    });
 
-  console.log(fd);
-  console.log(payload);
+    console.log(fd);
+    console.log(payload);
 
-  //return false;
+    //return false;
 
-  if (!document.querySelector(`#${target}`).checkValidity()) return false;
+    if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
-  $.ajax({
-    url: paymentEndPoint,
-    type: "POST",
-    data: fd,
-    dataType: "json",
-    contentType: false,
-    processData: false,
+    $.ajax({
+        url: `${proxy}${paymentEndPoint}`,
+        type: "POST",
+        data: fd,
+        dataType: "json",
+        contentType: false,
+        processData: false,
 
-    beforeSend: function () {
-      $("h5.cta-btn")
-        .html(
-          'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
-        )
-        .parent()
-        .addClass("disabled");
-    },
+        beforeSend: function() {
+            $("h5.cta-btn")
+                .html(
+                    'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
+                )
+                .parent()
+                .addClass("disabled");
+        },
 
-    success: function (response) {
-      $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+        success: function(response) {
+            $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
 
-      if (
-        (response.completeSuccess == true &&
-          response.customerFound == true &&
-          response.paymentMethodValid == true &&
-          response.paymentSuccessful == true) ||
-        response.indexOf("paypal.com/checkoutnow?token") > -1
-      ) {
-        localStorage.setItem("paidAmount", amount);
-        localStorage.setItem("firstName", payload["CustomerFirstName"]);
+            if (
+                (response.completeSuccess == true &&
+                    response.customerFound == true &&
+                    response.paymentMethodValid == true &&
+                    response.paymentSuccessful == true) ||
+                response.indexOf("paypal.com/checkoutnow?token") > -1
+            ) {
+                localStorage.setItem("paidAmount", amount);
+                localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-        if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
-          location.href = response;
-        } else {
-          window.location.replace("/thank-you-for-your-payment/");
-        }
-      } else {
-        console.log(response);
-        $("p.error-2").removeClass("d-none");
-        return false;
-      }
-    },
-    error: function (response) {
-      $("p.error-3").removeClass("d-none");
-      console.log(response);
-    },
-  });
+                if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+                    location.href = response;
+                } else {
+                    window.location.replace("/thank-you-for-your-payment/");
+                }
+            } else {
+                console.log(response);
+                $("p.error-2").removeClass("d-none");
+                return false;
+            }
+        },
+        error: function(response) {
+            $("p.error-3").removeClass("d-none");
+            console.log(response);
+        },
+    });
 }
