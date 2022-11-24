@@ -46,12 +46,6 @@ function postPayment(target, option) {
 
     let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
-    /* TEMP DATA */
-
-    payload["CustomerLastName"] = "PTest139";
-    payload["CustomerFirstName"] = "PTest139";
-    /* END OF TEMP DATA */
-
     var fd = new FormData();
     Object.keys(payload).map((key) => {
         fd.append(key, payload[key]);
