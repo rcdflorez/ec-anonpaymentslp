@@ -11,6 +11,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
+let testMode = urlParams.get("test");
 
 function postPayment(target, option) {
     amount = paymentAmount.value.replace(/[^0-9.]/g, "");
@@ -58,6 +59,8 @@ function postPayment(target, option) {
 
     if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
+    if (testMode != true) proxy = "";
+
     $.ajax({
         url: `${proxy}${paymentEndPoint}`,
         type: "POST",
@@ -88,10 +91,12 @@ function postPayment(target, option) {
                 localStorage.setItem("paidAmount", amount);
                 localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-                if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
-                    location.href = response;
-                } else {
-                    window.location.replace("/thank-you-for-your-payment/");
+                if (option == "PayPal") {
+                    if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+                        location.href = response;
+                    } else {
+                        window.location.replace("/thank-you-for-your-payment/");
+                    }
                 }
             } else {
                 console.log(response);
