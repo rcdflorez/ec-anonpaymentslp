@@ -94,10 +94,9 @@ function postPayment(target, option) {
                 if (option == "PayPal") {
                     if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
                         location.href = response;
-                    } else {
-                        window.location.replace("/thank-you-for-your-payment/");
                     }
                 }
+                window.location.replace("/thank-you-for-your-payment/");
             } else {
                 console.log(response);
                 $("p.error-2").removeClass("d-none");
