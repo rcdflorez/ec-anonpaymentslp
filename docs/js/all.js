@@ -740,6 +740,8 @@ function validateRoutingNumber(val) {
 const baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
 
+let proxy = "https://cors-anywhere.herokuapp.com/";
+
 let payload = {};
 let amount = 0;
 
@@ -747,6 +749,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
+let testMode = urlParams.get("test");
 
 function postPayment(target, option) {
   amount = paymentAmount.value.replace(/[^0-9.]/g, "");
@@ -782,12 +785,6 @@ function postPayment(target, option) {
 
   let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
-  /* TEMP DATA */
-
-  payload["CustomerLastName"] = "PTest139";
-  payload["CustomerFirstName"] = "PTest139";
-  /* END OF TEMP DATA */
-
   var fd = new FormData();
   Object.keys(payload).map((key) => {
     fd.append(key, payload[key]);
@@ -800,8 +797,10 @@ function postPayment(target, option) {
 
   if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
+  if (testMode != true) proxy = "";
+
   $.ajax({
-    url: paymentEndPoint,
+    url: `${proxy}${paymentEndPoint}`,
     type: "POST",
     data: fd,
     dataType: "json",
@@ -818,7 +817,15 @@ function postPayment(target, option) {
     },
 
     success: function (response) {
-      $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+      option == "PayPal"
+        ? $("h5.cta-btn")
+            .html(
+              ` <span class="paypal-button-title"> Pay now with </span>
+            <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>`
+            )
+            .parent()
+            .removeClass("disabled")
+        : $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
 
       if (
         (response.completeSuccess == true &&
@@ -830,11 +837,11 @@ function postPayment(target, option) {
         localStorage.setItem("paidAmount", amount);
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-        if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
-          location.href = response;
-        } else {
-          window.location.replace("/thank-you-for-your-payment/");
-        }
+        if (option == "PayPal") {
+          if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+            location.href = response;
+          }
+        } else window.location.replace("/thank-you-for-your-payment/");
       } else {
         console.log(response);
         $("p.error-2").removeClass("d-none");
