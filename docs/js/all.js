@@ -549,196 +549,213 @@ var cardValidator = (function (e) {
 ]);
 
 const prettyDollarConfig = {
-  currency: "$",
-  position: "before",
-  spaced: false,
-  thousandsDelimiter: ",",
-  decimalDelimiter: ".",
+    currency: "$",
+    position: "before",
+    spaced: false,
+    thousandsDelimiter: ",",
+    decimalDelimiter: ".",
 };
 
 const paymentAmount = document.getElementById("paymentAmount");
 
 function validatePaymentAmount() {
-  let formatedValue = paymentAmount.value.replace(/[^0-9.]/g, "");
-  console.log(formatedValue);
-  paymentAmount.value = formatedValue;
-  if (formatedValue.length >= 1) {
-    paymentAmount.value = prettyMoney(prettyDollarConfig, formatedValue);
-  }
+    let formatedValue = paymentAmount.value.replace(/[^0-9.]/g, "");
+    console.log(formatedValue);
+    paymentAmount.value = formatedValue;
+    if (formatedValue.length >= 1) {
+        paymentAmount.value = prettyMoney(prettyDollarConfig, formatedValue);
+    }
 }
+
 function delay(callback, ms) {
-  var timer = 0;
-  return function () {
-    var context = this,
-      args = arguments;
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      callback.apply(context, args);
-    }, ms || 0);
-  };
+    var timer = 0;
+    return function() {
+        var context = this,
+            args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            callback.apply(context, args);
+        }, ms || 0);
+    };
 }
 
 $("#paymentAmount").keyup(
-  delay(function (e) {
-    validatePaymentAmount();
-    amount = paymentAmount.value.replace(/[^0-9.]/g, "");
+    delay(function(e) {
+        validatePaymentAmount();
+        amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
-    if (amount < 5 || amount > 20000) {
-      $("p.error-1").removeClass("d-none");
-      paymentAmount.style.cssText = "border-color: red !important";
-      return false;
-    } else {
-      $("p.error-1").addClass("d-none");
-      paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
-    }
-  }, 500)
+        if (amount < 5 || amount > 20000) {
+            $("p.error-1").removeClass("d-none");
+            paymentAmount.style.cssText = "border-color: red !important";
+            return false;
+        } else {
+            $("p.error-1").addClass("d-none");
+            paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
+        }
+    }, 500)
 );
 
-(function () {
-  "use strict";
+(function() {
+    "use strict";
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll(".needs-validation");
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        $("p.error").addClass("d-none");
-        if (!form.checkValidity()) {
-          $("p.error-1").removeClass("d-none");
-        }
-        event.preventDefault();
-        event.stopPropagation();
-        form.classList.add("was-validated");
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function(form) {
+        form.addEventListener(
+            "submit",
+            function(event) {
+                $("p.error").addClass("d-none");
+                if (!form.checkValidity()) {
+                    $("p.error-1").removeClass("d-none");
+                }
+                event.preventDefault();
+                event.stopPropagation();
+                form.classList.add("was-validated");
 
-        if (!$(this).find(".paymentConsentCheck").is(":checked")) return false;
+                if (!$(this).find(".paymentConsentCheck").is(":checked")) return false;
 
-        postPayment(
-          $(this).attr("id"),
-          $(this).find(".payment-btn").attr("paymnt")
+                postPayment(
+                    $(this).attr("id"),
+                    $(this).find(".payment-btn").attr("paymnt")
+                );
+            },
+            false
         );
-      },
-      false
-    );
-  });
+    });
 })();
 
 let formMonth = 0;
 let formYear = 0;
 
 function formatCCExpDate(e) {
-  var inputChar = String.fromCharCode(e.keyCode);
-  var code = e.keyCode;
-  var allowedKeys = [8];
-  if (allowedKeys.indexOf(code) !== -1) {
-    return;
-  }
+    var inputChar = String.fromCharCode(e.keyCode);
+    var code = e.keyCode;
+    var allowedKeys = [8];
+    if (allowedKeys.indexOf(code) !== -1) {
+        return;
+    }
 
-  e.target.value = e.target.value
-    .replace(
-      /^([1-9]\/|[2-9])$/g,
-      "0$1/" // 3 > 03/
-    )
-    .replace(
-      /^(0[1-9]|1[0-2])$/g,
-      "$1/" // 11 > 11/
-    )
-    .replace(
-      /^([0-1])([3-9])$/g,
-      "0$1/$2" // 13 > 01/3
-    )
-    .replace(
-      /^(0?[1-9]|1[0-2])([0-9]{2})$/g,
-      "$1/$2" // 141 > 01/41
-    )
-    .replace(
-      /^([0]+)\/|[0]+$/g,
-      "0" // 0/ > 0 and 00 > 0
-    )
-    .replace(
-      /[^\d\/]|^[\/]*$/g,
-      "" // To allow only digits and `/`
-    )
-    .replace(
-      /\/\//g,
-      "/" // Prevent entering more than 1 `/`
+    e.target.value = e.target.value
+        .replace(
+            /^([1-9]\/|[2-9])$/g,
+            "0$1/" // 3 > 03/
+        )
+        .replace(
+            /^(0[1-9]|1[0-2])$/g,
+            "$1/" // 11 > 11/
+        )
+        .replace(
+            /^([0-1])([3-9])$/g,
+            "0$1/$2" // 13 > 01/3
+        )
+        .replace(
+            /^(0?[1-9]|1[0-2])([0-9]{2})$/g,
+            "$1/$2" // 141 > 01/41
+        )
+        .replace(
+            /^([0]+)\/|[0]+$/g,
+            "0" // 0/ > 0 and 00 > 0
+        )
+        .replace(
+            /[^\d\/]|^[\/]*$/g,
+            "" // To allow only digits and `/`
+        )
+        .replace(
+            /\/\//g,
+            "/" // Prevent entering more than 1 `/`
+        );
+
+    const currentMonth = new Date().getMonth() + 1;
+    const currentYear = parseInt(
+        new Date().getFullYear().toString().substr(-2),
+        10
     );
 
-  const currentMonth = new Date().getMonth() + 1;
-  const currentYear = parseInt(
-    new Date().getFullYear().toString().substr(-2),
-    10
-  );
+    if (e.target.value != "") {
+        formMonth = parseInt(e.target.value.split("/")[0], 10);
+        formYear = parseInt(e.target.value.split("/")[1], 10);
+    }
 
-  if (e.target.value != "") {
-    formMonth = parseInt(e.target.value.split("/")[0], 10);
-    formYear = parseInt(e.target.value.split("/")[1], 10);
-  }
+    console.log(currentMonth);
+    console.log(currentYear);
+    console.log(formMonth);
+    console.log(formYear);
 
-  console.log(currentMonth);
-  console.log(currentYear);
-  console.log(formMonth);
-  console.log(formYear);
-
-  if (
-    formYear > currentYear ||
-    (formYear == currentYear && formMonth >= currentMonth)
-  ) {
-    e.target.setCustomValidity("");
-  } else {
-    e.target.setCustomValidity("Invalid");
-  }
+    if (
+        formYear > currentYear ||
+        (formYear == currentYear && formMonth >= currentMonth)
+    ) {
+        e.target.setCustomValidity("");
+    } else {
+        e.target.setCustomValidity("Invalid");
+    }
 }
 
-$("ul.paymentOptionsNav a").on("click", function () {
-  let nextPO = $(this).data("po");
-  $("div.po-content").addClass("d-none");
+$("ul.paymentOptionsNav a").on("click", function() {
+    $("p.error").addClass("d-none");
 
-  $(`div.${nextPO}-PO`).removeClass("d-none");
+    let nextPO = $(this).data("po");
 
-  $("ul.paymentOptionsNav li").removeClass("active-nav");
-  $(this).closest("li").addClass("active-nav");
+    nextPO != "paypal" ?
+        $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled") :
+        $("h5.cta-btn")
+        .html(
+            ` <span class="paypal-button-title"> Pay now with </span>
+        <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>`
+        )
+        .parent()
+        .removeClass("disabled");
+
+    console.log(nextPO);
+
+    $("div.po-content").addClass("d-none");
+
+    $(`div.${nextPO}-PO`).removeClass("d-none");
+
+    $("ul.paymentOptionsNav li").removeClass("active-nav");
+    $(this).closest("li").addClass("active-nav");
 });
 
-$("#routing_number").keyup(function () {
-  if ($(this).val().length <= 5) return;
+$("#routing_number").keyup(function() {
+    if ($(this).val().length <= 5) return;
 
-  validateRoutingNumber($(this).val());
+    validateRoutingNumber($(this).val());
 });
 
 function validateRoutingNumber(val) {
-  var url =
-    "https://www.routingnumbers.info/api/data.json?rn=" +
-    $("#routing_number").val();
-  if (val.length < 9) {
-    $("#routing_number").addClass("is-invalid");
-    $("#routing_number").removeClass("is-valid");
-    return;
-  }
-
-  console.log(val.length);
-
-  $.getJSON(url).done(function (json) {
-    console.log(json);
-    if (json.code == 200) {
-      $("#bank_name").val(json.customer_name);
-
-      $("#routing_number").removeClass("is-invalid");
-      $("#routing_number").addClass("is-valid");
-      return true;
-    } else {
-      $("#routing_number").addClass("is-invalid");
-
-      return false;
+    var url =
+        "https://www.routingnumbers.info/api/data.json?rn=" +
+        $("#routing_number").val();
+    if (val.length < 9) {
+        $("#routing_number").addClass("is-invalid");
+        $("#routing_number").removeClass("is-valid");
+        return;
     }
-  });
-}
 
+    console.log(val.length);
+
+    $.getJSON(url).done(function(json) {
+        console.log(json);
+        if (json.code == 200) {
+            $("#bank_name").val(json.customer_name);
+
+            $("#routing_number").removeClass("is-invalid");
+            $("#routing_number").addClass("is-valid");
+            return true;
+        } else {
+            $("#routing_number").addClass("is-invalid");
+
+            return false;
+        }
+    });
+}
 //let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
 const baseURL = "https://staginglogin.explorecredit.com/";
 let paymentMethod = ""; // it may be Bank or Debit
+
+let proxy = "https://cors-anywhere.herokuapp.com/";
 
 let payload = {};
 let amount = 0;
@@ -747,85 +764,107 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const campaign = urlParams.get("utm_campaign");
 const loanID = urlParams.get("loanId");
+let testMode = urlParams.get("test");
 
 function postPayment(target, option) {
-  amount = paymentAmount.value.replace(/[^0-9.]/g, "");
+    amount = paymentAmount.value.replace(/[^0-9.]/g, "");
 
-  if (amount < 5 || amount > 20000) {
-    paymentAmount.style.cssText = "border-color: red !important";
-    $("p.error-1").removeClass("d-none");
-    return false;
-  } else {
-    $("p.error-1").addClass("d-none");
-    paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
-  }
+    //debugger;
 
-  $(`#${target} input[type=text]`).each(function () {
-    payload[$(this).attr("jsonKey")] = $(this).val();
-  });
+    if (amount < 5 || amount > 20000) {
+        paymentAmount.style.cssText = "border-color: red !important";
+        $("p.error-1").removeClass("d-none");
+        return false;
+    } else {
+        $("p.error-1").addClass("d-none");
+        paymentAmount.style.cssText = "border: 1px solid #dee2e6 !important;";
+    }
 
-  if (typeof payload["DebitCardExp"] !== "undefined") {
-    let expDate = payload["DebitCardExp"];
+    $(`#${target} input[type=text]`).each(function() {
+        payload[$(this).attr("jsonKey")] = $(this).val();
+    });
 
-    payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
+    if (typeof payload["DebitCardExp"] !== "undefined") {
+        let expDate = payload["DebitCardExp"];
+
+        payload["DebitCardExp"] = `${expDate.split("/")[0]}20${
       expDate.split("/")[1]
     }`;
-  }
+    }
 
-  payload["LoanId"] = loanID;
-  payload["SessionId"] = `${
+    payload["LoanId"] = loanID;
+    payload["SessionId"] = `${
     payload["Last4SSN"]
   }-${campaign}-${new Date().toJSON()}`;
-  payload["PaymentAmount"] = amount;
+    payload["PaymentAmount"] = amount;
 
-  let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
+    let paymentEndPoint = `${baseURL}API/ProcessAnonymous${option}PaymentRequest?`;
 
-  var fd = new FormData();
-  Object.keys(payload).map((key) => {
-    fd.append(key, payload[key]);
-  });
+    var fd = new FormData();
+    Object.keys(payload).map((key) => {
+        fd.append(key, payload[key]);
+    });
 
-  if (!document.querySelector(`#${target}`).checkValidity()) return false;
+    console.log(fd);
+    console.log(payload);
 
-  $.ajax({
-    url: paymentEndPoint,
-    type: "POST",
-    data: fd,
-    dataType: "json",
-    contentType: false,
-    processData: false,
+    //return false;
 
-    beforeSend: function () {
-      $("h5.cta-btn")
-        .html(
-          'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
-        )
-        .parent()
-        .addClass("disabled");
-    },
+    if (!document.querySelector(`#${target}`).checkValidity()) return false;
 
-    success: function (response) {
-      $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+    if (testMode != true) proxy = "";
 
-      if (
-        response.completeSuccess == true &&
-        response.customerFound == true &&
-        response.paymentMethodValid == true &&
-        response.paymentSuccessful == true
-      ) {
-        localStorage.setItem("paidAmount", amount);
-        localStorage.setItem("firstName", payload["CustomerFirstName"]);
+    $.ajax({
+        url: `${proxy}${paymentEndPoint}`,
+        type: "POST",
+        data: fd,
+        dataType: "json",
+        contentType: false,
+        processData: false,
 
-        window.location.replace("/thank-you-for-your-payment/");
-      } else {
-        console.log(response);
-        $("p.error-2").removeClass("d-none");
-        return false;
-      }
-    },
-    error: function (response) {
-      $("p.error-3").removeClass("d-none");
-      console.log(response);
-    },
-  });
+        beforeSend: function() {
+            $("h5.cta-btn")
+                .html(
+                    'Processing...<div class="spinner"><div class="cube1"></div><div class="cube2"></div></div>'
+                )
+                .parent()
+                .addClass("disabled");
+        },
+
+        success: function(response) {
+            option == "PayPal" ?
+                $("h5.cta-btn")
+                .html(
+                    ` <span class="paypal-button-title"> Pay now with </span>
+            <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>`
+                )
+                .parent()
+                .removeClass("disabled") :
+                $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+
+            if (
+                response.completeSuccess == true &&
+                response.customerFound == true &&
+                response.paymentMethodValid == true &&
+                response.paymentSuccessful == true
+            ) {
+                localStorage.setItem("paidAmount", amount);
+                localStorage.setItem("firstName", payload["CustomerFirstName"]);
+
+                if (option == "PayPal") {
+                    if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+                        location.href = response;
+                    }
+                } else window.location.replace("/thank-you-for-your-payment/");
+            } else {
+                console.log(response);
+                $("p.error-2").removeClass("d-none");
+                return false;
+            }
+        },
+        error: function(response) {
+            $("p.error-3").removeClass("d-none");
+            console.log(response);
+        },
+    });
 }
