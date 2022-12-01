@@ -1,5 +1,5 @@
 //let baseURL = "https://explorecustomerportal-staging.azurewebsites.net/";
-const baseURL = "https://staginglogin.explorecredit.com/";
+const baseURL = "https://login.explorecredit.com/API/";
 let paymentMethod = ""; // it may be Bank or Debit
 
 let proxy = "https://cors-anywhere.herokuapp.com/";
