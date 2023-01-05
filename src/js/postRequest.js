@@ -79,6 +79,7 @@ function postPayment(target, option) {
     },
 
     success: function (response) {
+      //debugger;
       console.log(response);
       if (option == "PayPal") {
         $("h5.cta-btn")
@@ -91,6 +92,7 @@ function postPayment(target, option) {
 
         if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
           location.href = response;
+          return;
         }
       } else {
         $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
