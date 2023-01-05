@@ -79,6 +79,7 @@ function postPayment(target, option) {
     },
 
     success: function (response) {
+      console.log(response);
       option == "PayPal"
         ? $("h5.cta-btn")
             .html(
