@@ -80,7 +80,7 @@ function postPayment(target, option) {
 
     success: function (response) {
       console.log(response);
-      if (option == PayPal) {
+      if (option == "PayPal") {
         $("h5.cta-btn")
           .html(
             ` <span class="paypal-button-title"> Pay now with </span>
