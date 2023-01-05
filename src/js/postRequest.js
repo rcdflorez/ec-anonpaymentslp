@@ -80,15 +80,21 @@ function postPayment(target, option) {
 
     success: function (response) {
       console.log(response);
-      option == "PayPal"
-        ? $("h5.cta-btn")
-            .html(
-              ` <span class="paypal-button-title"> Pay now with </span>
+      if (option == PayPal) {
+        $("h5.cta-btn")
+          .html(
+            ` <span class="paypal-button-title"> Pay now with </span>
             <span class="paypal-logo"> <i>Pay</i><i>Pal</i> </span>`
-            )
-            .parent()
-            .removeClass("disabled")
-        : $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+          )
+          .parent()
+          .removeClass("disabled");
+
+        if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
+          location.href = response;
+        }
+      } else {
+        $("h5.cta-btn").html(`Make Payment`).parent().removeClass("disabled");
+      }
 
       if (
         response.completeSuccess == true &&
@@ -99,11 +105,7 @@ function postPayment(target, option) {
         localStorage.setItem("paidAmount", amount);
         localStorage.setItem("firstName", payload["CustomerFirstName"]);
 
-        if (option == "PayPal") {
-          if (response.indexOf("paypal.com/checkoutnow?token") > -1) {
-            location.href = response;
-          }
-        } else window.location.replace("/thank-you-for-your-payment/");
+        window.location.replace("/thank-you-for-your-payment/");
       } else {
         console.log(response);
         $("p.error-2").removeClass("d-none");
