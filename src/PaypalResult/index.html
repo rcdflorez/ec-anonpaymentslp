@@ -2,13 +2,37 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174358575-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "UA-174358575-1");
+    </script>
+    <!-- Hotjar Tracking Code for Annon Payments Page -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj =
+                h.hj ||
+                function () {
+                    (h.hj.q = h.hj.q || []).push(arguments);
+                };
+            h._hjSettings = { hjid: 3321907, hjsv: 6 };
+            a = o.getElementsByTagName("head")[0];
+            r = o.createElement("script");
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B5C98EGV0J"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -164,7 +188,8 @@
             justify-content: center;
 
         }
-        footer{
+
+        footer {
             justify-content: center;
             text-align: center;
         }
